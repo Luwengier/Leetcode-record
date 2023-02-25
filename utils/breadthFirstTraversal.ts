@@ -1,5 +1,5 @@
 //breadth-first search(BFS), level-order traversal
-class Tree {
+class TreeNode {
   val: number
   left: TreeNode | null
   right: TreeNode | null
@@ -10,10 +10,10 @@ class Tree {
   }
 }
 
-const breadthFirstTraversal = (root: Tree | null, callback: Function) => {
+const breadthFirstTraversal = (root: TreeNode | null, callback: Function) => {
   if (!root) return
 
-  let queue: Tree[] = [root]
+  let queue: TreeNode[] = [root]
 
   while (queue.length > 0) {
     let item = queue.shift()
