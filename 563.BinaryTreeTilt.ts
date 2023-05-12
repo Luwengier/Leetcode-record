@@ -10,17 +10,14 @@ class TreeNode {
 }
 
 function findTilt(root: TreeNode | null): number {
-  if (!root) return 0;
   let result = 0;
-  let distance = 0;
 
-  function compare(node: TreeNode): number {
-    const left = node.left ? compare(node.left) : 0;
-    const right = node.right ? compare(node.right) : 0;
+  function compare(node: TreeNode | null): number {
+    if (!node) return 0;
+    const left = compare(node.left);
+    const right = compare(node.right);
 
-    distance = left - right;
-    result += Math.abs(distance);
-
+    result += Math.abs(left - right);
     return left + right + node.val;
   }
 
