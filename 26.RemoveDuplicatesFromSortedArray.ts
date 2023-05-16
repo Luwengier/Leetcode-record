@@ -4,10 +4,7 @@ function removeDuplicates(nums: number[]): number {
   const originLength = nums.length;
 
   while (index < nums.length) {
-    while (
-      nums[index + counter] === nums[index + counter + 1] &&
-      nums[index + counter] !== undefined
-    ) {
+    while (nums[index + counter] === nums[index + counter + 1]) {
       counter++;
     }
     if (counter) {
