@@ -1,5 +1,4 @@
 function removeElement(nums: number[], val: number): number {
-  const originLen = nums.length
   let counter = 0
   let i = 0
 
@@ -14,8 +13,5 @@ function removeElement(nums: number[], val: number): number {
     i++
   }
 
-  const r = nums.length
-  nums.splice(nums.length, 0, ...new Array(originLen - nums.length))
-
-  return r
+  return nums.length
 }
