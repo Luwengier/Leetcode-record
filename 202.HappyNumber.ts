@@ -1,13 +1,29 @@
+const cache = new Map()
+
 function isHappy(n: number): boolean {
-  let collect: number[] = []
-  while (true) {
-    n = String(n)
-      .split('')
-      .reduce((acc, cur) => acc + Math.pow(Number(cur), 2), 0)
+  const collection = new Set<number>()
 
-    if (n === 1) return true
-    if (collect.includes(n)) return false
+  function check(n: number): boolean {
+    if (n === 1 || cache.get(n)) {
+      collection.forEach((n) => {
+        cache.set(n, true)
+      })
+      return true
+    }
+    if (collection.has(n) || cache.get(n) === false) {
+      collection.forEach((n) => {
+        cache.set(n, false)
+      })
+      return false
+    }
 
-    collect.push(n)
+    collection.add(n)
+
+    const nums = n.toString().split('')
+    const newN = nums.reduce((acc, cur) => acc + Number(cur) ** 2, 0)
+
+    return check(newN)
   }
+
+  return check(n)
 }
